@@ -6,6 +6,10 @@ import Button from '../../components/Button/button';
 const info1 = () => {
     const navigation = useNavigation();
 
+    const handlePress = () => {
+        navigation.navigate('Info2');
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.textContainer}>
@@ -16,6 +20,7 @@ const info1 = () => {
                 title="التطبيق"
                 backgroundColor="#8ed5d7"
                 textColor="white"
+                onPress={handlePress}
             />
         </View>
     )

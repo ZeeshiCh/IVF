@@ -6,6 +6,11 @@ import OnBoarding2 from '../Screens/OnboardingScreens/onBoarding2';
 import OnBoarding3 from '../Screens/OnboardingScreens/onboarding3';
 import OnBoarding4 from '../Screens/OnboardingScreens/onBoarding4';
 import Info1 from '../Screens/InfoScreens/info1';
+import Info2 from '../Screens/InfoScreens/info2';
+import Info3 from '../Screens/InfoScreens/info3';
+import Info4 from '../Screens/InfoScreens/info4';
+import Info5 from '../Screens/InfoScreens/info5';
+import BottomTabNavigator from './BottomTab';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +27,11 @@ export default function AppNavigator() {
       <Stack.Screen name="OnBoarding3" component={OnBoarding3} />
       <Stack.Screen name="OnBoarding4" component={OnBoarding4} />
       <Stack.Screen name="Info1" component={Info1} />
+      <Stack.Screen name="Info2" component={Info2} />
+      <Stack.Screen name="Info3" component={Info3} />
+      <Stack.Screen name="Info4" component={Info4} />
+      <Stack.Screen name="Info5" component={Info5} />
+      <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
     </Stack.Navigator>
   );
 }
