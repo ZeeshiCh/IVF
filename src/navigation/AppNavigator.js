@@ -11,6 +11,8 @@ import Info3 from '../Screens/InfoScreens/info3';
 import Info4 from '../Screens/InfoScreens/info4';
 import Info5 from '../Screens/InfoScreens/info5';
 import BottomTabNavigator from './BottomTab';
+import Profile1 from '../Screens/BottomTab/MyProfile/profile1';
+import Profile2Screen from '../Screens/BottomTab/MyProfile/profile2';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +34,8 @@ export default function AppNavigator() {
       <Stack.Screen name="Info4" component={Info4} />
       <Stack.Screen name="Info5" component={Info5} />
       <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
+      <Stack.Screen name="Profile1" component={Profile1} />
+      <Stack.Screen name="Profile2Screen" component={Profile2Screen} />
     </Stack.Navigator>
   );
 }

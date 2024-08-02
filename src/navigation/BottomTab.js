@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../Screens/Dashboard/home';
-import CalendarScreen from '../Screens/calender';
-// import TreatmentScreen from '../Screens/TreatmentScreen'; // Assuming you have a treatment screen
-// import ProfileScreen from '../Screens/ProfileScreen'; // Assuming you have a profile screen
+import CalendarScreen from '../Screens/BottomTab/calender';
+import TreatmentScreen from '../Screens/BottomTab/treatment';
+import ProfileScreen from '../Screens/BottomTab/MyProfile/profile';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -22,12 +22,12 @@ export default function BottomTabNavigator() {
             case 'Calendar':
               iconName = 'calendar';
               break;
-            // case 'Treatment':
-            //   iconName = 'heart';
-            //   break;
-            // case 'Profile':
-            //   iconName = 'person';
-            //   break;
+            case 'Treatment':
+              iconName = 'heart';
+              break;
+            case 'Profile':
+              iconName = 'person';
+              break;
             default:
               iconName = 'home';
               break;
@@ -53,8 +53,8 @@ export default function BottomTabNavigator() {
     >
       <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'بيت', headerShown: false }} />
       <Tab.Screen name="Calendar" component={CalendarScreen} options={{ title: 'تقويم', headerShown: false }} />
-      {/* <Tab.Screen name="Treatment" component={TreatmentScreen} options={{ title: 'علاجي' }} />
-      <Tab.Screen name="Profile" component={ProfileScreen} options={{ title: 'حساب تعريفي' }} /> */}
+      <Tab.Screen name="Treatment" component={TreatmentScreen} options={{ title: 'علاجي', headerShown: false }} />
+      <Tab.Screen name="Profile" component={ProfileScreen} options={{ title: 'حساب تعريفي', headerShown: false }} />
     </Tab.Navigator>
   );
 }

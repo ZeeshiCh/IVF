@@ -1,7 +1,9 @@
+// CalendarScreen.js
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Dimensions } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
+import Header from '../../components/Header/header';
 
 const { width } = Dimensions.get('window'); // Get the screen width
 
@@ -49,13 +51,7 @@ export default function CalendarScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.profileIcon}></View>
-        <Text style={styles.headerText}>التقويم الخاص بك</Text>
-        <TouchableOpacity style={styles.menuIcon}>
-          <Text style={styles.menuText}>≡</Text>
-        </TouchableOpacity>
-      </View>
+      <Header headerText="التقويم الخاص بك" /> 
       <Calendar
         style={styles.calendar}
         current={moment().format('YYYY-MM-DD')}
@@ -124,43 +120,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 20,
   },
-  header: {
-    width: '100%',
-    padding: 20,
-    backgroundColor: '#a8dadc',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
-  },
-  profileIcon: {
-    width: 30,
-    height: 30,
-    backgroundColor: '#fff',
-    borderRadius: 15,
-  },
   welcomeText: {
     paddingTop: 40,
     paddingRight: 15,
     color: '#8ed5d7',
     fontSize: 26,
     alignSelf: 'flex-end'
-  },
-  headerText: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  menuIcon: {
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  menuText: {
-    fontSize: 40,
-    color: '#fff',
   },
   calendar: {
     width: width,
