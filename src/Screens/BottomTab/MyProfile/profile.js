@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Dimensions, Image } from 'react-native';
 import Header from '../../../components/Header/header';
 import Button from '../../../components/Button/button';
 import { useNavigation } from '@react-navigation/native';
@@ -15,27 +15,57 @@ export default function MyProfileScreen() {
       <Header headerText="My Profile" />
       <View style={styles.contentContainer}>
         <Text style={styles.title}>Important information about IVF procedure</Text>
-        <View style={styles.stepsContainer}>
-          <View style={styles.stepRow}>
-            <Step title="Tests" highlighted />
-            <Step title="Energizing" />
-            <Step title="Recovery" />
-            <Step title="Transformation" />
+
+        <View style={styles.stageSteps}>
+          <View style={styles.step}>
+            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.image} />
+            <Text style={styles.stepTextActive}>Tests</Text>
           </View>
-          <View style={styles.stepRow}>
-            <Step title="Wait two weeks" />
-            <Step title="Pharmacological stimulation" />
-            <Step title="Egg retrieval" />
-            <Step title="Embryo transfer" />
+          <View style={styles.step1}>
+            <Image source={require('../../../assets/images/profileimages/image2.png')} style={styles.image} />
+            <Text style={styles.stepText}>Energizing</Text>
           </View>
-          <View style={styles.stepRow}>
-            <Step title="Be empowered" />
+          <View style={styles.step1}>
+            <Image source={require('../../../assets/images/profileimages/image3.png')} style={styles.image} />
+            <Text style={styles.stepText}>Recovery</Text>
+          </View>
+          <View style={styles.step1}>
+            <Image source={require('../../../assets/images/profileimages/image4.png')} style={styles.image} />
+            <Text style={styles.stepText}>Transformation</Text>
           </View>
         </View>
+
+        <View style={styles.stageSteps}>
+          <View style={styles.step1}>
+            <Image source={require('../../../assets/images/profileimages/image5.png')} style={styles.image} />
+            <Text style={styles.stepText}>Wait two weeks</Text>
+          </View>
+          <View style={styles.step1}>
+            <Image source={require('../../../assets/images/profileimages/image6.png')} style={styles.image} />
+            <Text style={styles.stepText}>Pharmacological stimulation</Text>
+          </View>
+          <View style={styles.step1}>
+            <Image source={require('../../../assets/images/profileimages/image7.png')} style={styles.image} />
+            <Text style={styles.stepText}>Egg retrieval</Text>
+          </View>
+          <View style={styles.step1}>
+            <Image source={require('../../../assets/images/profileimages/image3.png')} style={styles.image} />
+            <Text style={styles.stepText}>Embryo transfer</Text>
+          </View>
+        </View>
+
+        <View style={styles.stageSteps}>
+          <View style={styles.step1}>
+            <Image source={require('../../../assets/images/profileimages/image8.png')} style={styles.image} />
+            <Text style={styles.stepText}>Be empowered</Text>
+          </View>
+        </View>
+
         <View style={styles.contactContainer}>
           <Text style={styles.contactTitle}>Disclaimer</Text>
           <Text style={styles.contactText}>
-            In order to proceed with your IVF file, you need to read or see important information. Click "I agree" to continue.          </Text>
+            In order to proceed with your IVF file, you need to read or see important information. Click "I agree" to continue.
+          </Text>
         </View>
       </View>
       <Button
@@ -48,12 +78,6 @@ export default function MyProfileScreen() {
   );
 }
 
-const Step = ({ title, highlighted }) => (
-  <View style={[styles.step, highlighted && styles.highlightedStep]}>
-    <Text style={styles.stepText}>{title}</Text>
-  </View>
-);
-
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -65,43 +89,56 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 20,
   },
+  image: {
+    marginTop: 10,
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
+  },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     color: AppColors.grey,
-    marginVertical: 25,
-    textAlign: 'center'
+    textAlign: 'center',
   },
-  stepsContainer: {
-    width: width * 0.9,
-    marginBottom: 20,
-  },
-  stepRow: {
+  stageSteps: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingBottom: 50,
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    marginTop: 50,
+    width: '100%', 
+    paddingHorizontal: 20, 
   },
   step: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: AppColors.black_25,
-    justifyContent: 'center',
+    backgroundColor: AppColors.downyCircle,
+    height: 70,
+    width: 70,
+    borderRadius: 35,
     alignItems: 'center',
-    marginHorizontal: 5,
+    justifyContent: 'center',
   },
-  highlightedStep: {
-    backgroundColor: AppColors.downy,
+  step1: {
+    backgroundColor: AppColors.white,
+    height: 70,
+    width: 70,
+    borderRadius: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+    elevation: 5,
   },
   stepText: {
+    color: AppColors.grey,
+    marginTop: 5,
     textAlign: 'center',
-    fontSize: 12,
-    color: '#000',
   },
-  footerNote: {
-    fontSize: 16,
-    color: '#00adf5',
-    marginVertical: 10,
+  stepTextActive: {
+    color: AppColors.downy,
+    marginTop: 5,
+    textAlign: 'center',
   },
   contactContainer: {
     width: width * 0.9,
@@ -112,8 +149,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     marginBottom: 20,
+    marginTop: 50,
   },
-
   contactTitle: {
     fontSize: 24,
     fontWeight: '700',

@@ -78,6 +78,15 @@ import Questionnaire3Screen from '../Screens/Drawer/IVF Calculator/Cycle3/questi
 import ResultsScreen from '../Screens/Drawer/IVF Calculator/Result';
 import Settings from '../Screens/Drawer/HealthSupport';
 import LanguageSelectionScreen from '../Screens/Auth/language';
+import TestScreen from '../Screens/BottomTab/MyProfile/InformationScreens/tests';
+import EnergizingScreen from '../Screens/BottomTab/MyProfile/InformationScreens/energising';
+import RecoveryScreen from '../Screens/BottomTab/MyProfile/InformationScreens/recovery';
+import TrasnformationScreen from '../Screens/BottomTab/MyProfile/InformationScreens/transformation';
+import WaitForWeeksScreen from '../Screens/BottomTab/MyProfile/InformationScreens/waitforweeks';
+import DrugStimulationScreen from '../Screens/BottomTab/MyProfile/InformationScreens/drugstimulation';
+import EggRetrivalScreen from '../Screens/BottomTab/MyProfile/InformationScreens/eggretrival';
+import EmbyroTransferScreen from '../Screens/BottomTab/MyProfile/InformationScreens/embyrotransfer';
+import BeEmpoweredScreen from '../Screens/BottomTab/MyProfile/InformationScreens/beempowered';
 
 const Stack = createStackNavigator();
 
@@ -165,6 +174,15 @@ export default function AppNavigator() {
       <Stack.Screen name="Questionnaire3Screen" component={Questionnaire3Screen} />
       <Stack.Screen name="ResultsScreen" component={ResultsScreen} />
       <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="TestScreen" component={TestScreen} />
+      <Stack.Screen name="EnergizingScreen" component={EnergizingScreen} />
+      <Stack.Screen name="RecoveryScreen" component={RecoveryScreen} />
+      <Stack.Screen name="TrasnformationScreen" component={TrasnformationScreen} />
+      <Stack.Screen name="WaitForWeeksScreen" component={WaitForWeeksScreen} />
+      <Stack.Screen name="DrugStimulationScreen" component={DrugStimulationScreen} />
+      <Stack.Screen name="EggRetrivalScreen" component={EggRetrivalScreen} />
+      <Stack.Screen name="EmbyroTransferScreen" component={EmbyroTransferScreen} />
+      <Stack.Screen name="BeEmpoweredScreen" component={BeEmpoweredScreen} />
     </Stack.Navigator>
   );
 }

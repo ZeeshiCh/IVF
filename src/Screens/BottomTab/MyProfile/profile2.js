@@ -37,11 +37,11 @@ export default function Profile2Screen() {
                     <Image source={require('../../../assets/images/previouscycle.png')} style={styles.image} />
                         <Text style={styles.menuText}>Your previous cycle</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuItem}>
+                    <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('EmbyroEgg')}>
                     <Image source={require('../../../assets/images/egg.png')} style={styles.image} />
                         <Text style={styles.menuText}>The embryo and the egg</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuItem}>
+                    <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('PregnancyScan')}>
                     <Image source={require('../../../assets/images/pregtab.png')} style={styles.image} />
                         <Text style={styles.menuText}>Pregnancy tab</Text>
                     </TouchableOpacity>
@@ -50,23 +50,51 @@ export default function Profile2Screen() {
                 <Text style={styles.title}>Important information about IVF procedure</Text>
                 <View style={styles.stepsContainer}>
                     <View style={styles.stepRow}>
-                        <View style={styles.step}>
-                            <Text style={styles.stepText}>تحويل</Text>
-                        </View>
-                        <View style={styles.step}>
-                            <Text style={styles.stepText}>استرجاع</Text>
-                        </View>
-                        <View style={styles.step}>
-                            <Text style={styles.stepText}>تنشيط</Text>
-                        </View>
-                        <View style={styles.step}>
-                            <Text style={styles.stepText}>اختبارات</Text>
-                        </View>
+                        <TouchableOpacity style={styles.step} onPress={() => navigation.navigate('TestScreen')}>
+                            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.stepIcon} />
+                            <Text style={styles.stepText}>Tests</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.step} onPress={() => navigation.navigate('EnergizingScreen')}>
+                            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.stepIcon} />
+                            <Text style={styles.stepText}>Energizing</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.step} onPress={() => navigation.navigate('RecoveryScreen')}>
+                            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.stepIcon} />
+                            <Text style={styles.stepText}>Recovery</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.step} onPress={() => navigation.navigate('TrasnformationScreen')}>
+                            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.stepIcon} />
+                            <Text style={styles.stepText}>Transformation</Text>
+                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.showAllButton}>
-                        <Text style={styles.showAllText}>Show all</Text>
-                    </TouchableOpacity>
+                    <View style={styles.stepRow}>
+                        <TouchableOpacity style={styles.step} onPress={() => navigation.navigate('WaitForWeeksScreen')}>
+                            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.stepIcon} />
+                            <Text style={styles.stepText}>Wait Two Weeks</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.step} onPress={() => navigation.navigate('DrugStimulationScreen')}>
+                            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.stepIcon} />
+                            <Text style={styles.stepText}>Pharmacological Stimulation</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.step} onPress={() => navigation.navigate('EggRetrivalScreen')}>
+                            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.stepIcon} />
+                            <Text style={styles.stepText}>Egg Retrieval</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.step} onPress={() => navigation.navigate('EmbyroTransferScreen')}>
+                            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.stepIcon} />
+                            <Text style={styles.stepText}>Embryo Transfer</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.stepRow}>
+                        <TouchableOpacity style={styles.step} onPress={() => navigation.navigate('BeEmpoweredScreen')}>
+                            <Image source={require('../../../assets/images/profileimages/image1.png')} style={styles.stepIcon} />
+                            <Text style={styles.stepText}>Be Empowered</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
+                <TouchableOpacity style={styles.showAllButton}>
+                    <Text style={styles.showAllText}>Show all</Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     );
@@ -144,8 +172,8 @@ const styles = StyleSheet.create({
         width: width * 0.9,
     },
     image: {
-        height:40,
-        width: 40,
+        height:50,
+        width: 50,
         resizeMode: 'contain'
     },
     menuItem: {
@@ -177,19 +205,29 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: width * 0.9,
-        marginBottom: 10,
+        marginBottom: 40,
     },
     step: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        backgroundColor: '#8ed5d7',
+        width: 70,
+        height: 70,
+        borderRadius: 35,
+        backgroundColor: AppColors.downy,
+        marginBottom: 20,
+    },
+    stepIcon: {
+        width: 50,
+        height: 50,
+        marginTop:50,
+        resizeMode: 'contain',
+        marginBottom: 10,
     },
     stepText: {
-        fontSize: 12,
-        color: 'white',
+        fontSize: 16,
+        fontWeight:'bold',
+        marginTop:20,
+        color: AppColors.downy,
         textAlign: 'center',
     },
     showAllButton: {
