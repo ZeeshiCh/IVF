@@ -2,37 +2,38 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import CustomTextInput from '../../components/TextInput/textInput';
-import { useNavigation } from '@react-navigation/native'; 
+import { useNavigation } from '@react-navigation/native';
+import Button from '../../components/Button/button';
+import AppColors from '../../utils/appColors';
 
 export default function OnBoarding3() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const navigation = useNavigation(); 
-
-  const handlePress = () => {
-    navigation.navigate('OnBoarding4');
-  };
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>دعونا نجعلك تقوم بالتسجيل</Text>
+        <Text style={styles.title}>Choose and confirm the password</Text>
       </View>
       <CustomTextInput
-        placeholder="اسم المستخدم"
-        value={username}
-        onChangeText={setUsername}
+        placeholder="Enter the password"
+        value={password}
+        onChangeText={setPassword}
       />
       <CustomTextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
+        placeholder="Confirm password"
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+        keyboardType="password"
       />
-      <TouchableOpacity onPress={handlePress}>
-        <Text style={styles.buttonText}>التالي</Text>
-      </TouchableOpacity>
+      <Button
+        title="NEXT"
+        backgroundColor={AppColors.lavenderBlue}
+        textColor="white"
+        onPress={() => navigation.navigate('OnBoarding4')}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -41,35 +42,28 @@ export default function OnBoarding3() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#54b0b3',
-    alignItems: 'center', 
+    backgroundColor: AppColors.bgcolor,
+    alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
   textContainer: {
-    width: '100%', 
-    alignItems: 'flex-end', 
+    width: '100%',
     marginBottom: 40,
   },
   title: {
-    fontSize: 32,
-    color: 'white',
+    fontSize: 28,
+    color: AppColors.downy,
     marginBottom: 5,
-    textAlign: 'right', 
+    textAlign: 'center',
     fontWeight: 'bold',
   },
   button: {
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: AppColors.white,
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
     marginBottom: 15,
-  },
-  buttonText: {
-    fontSize: 24,
-    color: '#ffffff',
-    paddingVertical: 20,
-    fontWeight: 'bold',
   },
 });

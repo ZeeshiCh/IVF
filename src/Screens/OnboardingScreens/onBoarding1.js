@@ -1,30 +1,45 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/Button/button';
+import AppColors from '../../utils/appColors';
 
 export default function OnBoarding1() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Text style={styles.logoText}>LOGO</Text>
-      </View>
-      <Button
-        title="Continue With Google"
-        backgroundColor="#8ed5d7"
-        textColor="white"
-        iconName="logo-google"
-        onPress={() => alert('Continue with Google')}
-      />
-      <Button
-        title="انشاء حساب جديد"
-        backgroundColor="#57c6e6"
-        textColor="white"
-        onPress={() => navigation.navigate('OnBoarding2')}
-      />
-      <Text style={styles.footerText}>هل لديك حساب؟ تسجيل الدخول</Text>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.logoContainer}>
+          <Text style={styles.logoText}>LOGO</Text>
+        </View>
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>Start Your IVF Journey Now</Text>
+          <Text style={styles.desc}>Lorem ipsum dolor sit amet, consectetur</Text>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Continue With Google"
+            backgroundColor={AppColors.downy}
+            textColor={AppColors.white}
+            iconName="logo-google"
+            onPress={() => alert('Continue with Google')}
+          />
+          <Button
+            title="Create a new account"
+            backgroundColor={AppColors.lavenderBlue}
+            textColor={AppColors.white}
+            onPress={() => navigation.navigate('OnBoarding2')}
+          />
+        </View>
+        <View style={styles.footerContainer}>
+          <Text style={styles.footerText}>Already had an account? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+  <Text style={styles.loginText}>Login</Text>
+</TouchableOpacity>
+
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -32,19 +47,22 @@ export default function OnBoarding1() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: AppColors.bgcolor,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'space-between',
   },
   logoContainer: {
     width: 120,
     height: 120,
     borderRadius: 60,
-    backgroundColor: 'white',
+    backgroundColor: AppColors.white,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 400,
-    shadowColor: '#000',
+    marginTop: 70,
+    alignSelf: 'center',
+    shadowColor: AppColors.black,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
@@ -52,10 +70,43 @@ const styles = StyleSheet.create({
   },
   logoText: {
     fontSize: 24,
-    color: 'pink',
+    fontWeight: 'bold',
+    color: AppColors.cherryBlossom,
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 20,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: AppColors.downy,
+    textAlign: 'center',
+  },
+  desc: {
+    fontSize: 14,
+    color: AppColors.downy,
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  footerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 40,
   },
   footerText: {
-    color: 'grey',
-    fontSize: 18,
+    color: AppColors.grey,
+    fontSize: 14,
+  },
+  loginText: {
+    fontSize: 14,
+    color: AppColors.downy,
+    fontWeight: 'bold',
   },
 });

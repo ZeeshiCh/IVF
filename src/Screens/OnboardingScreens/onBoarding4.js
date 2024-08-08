@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AppColors from '../../utils/appColors';
 
 export default function OnBoarding4() {
   const navigation = useNavigation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('Info1'); 
-    }, 3000); 
+      navigation.navigate('Info1');
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [navigation]);
@@ -23,9 +24,9 @@ export default function OnBoarding4() {
       <View style={styles.circleMini}></View>
 
       <View style={styles.textContainer}>
-        <Text style={styles.footerText}>التطبيق عيادة</Text>
-        <Text style={styles.footerText1}>التطبيقالتطبيقالتطبيق عيادةعيادة</Text>
-        <Text style={styles.footerText}>التطبيق عيادة</Text>
+        <Text style={styles.footerText}>Congratulation!</Text>
+        <Text style={styles.footerText1}>Your account has been created successfully</Text>
+        <Text style={styles.footerText}>Let's go!</Text>
       </View>
     </View>
   );
@@ -34,7 +35,7 @@ export default function OnBoarding4() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#8ed5d7',
+    backgroundColor: AppColors.downyBackground,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     width: 500,
     height: 500,
     borderRadius: 250,
-    backgroundColor: '#45b7c4',
+    backgroundColor: AppColors.downyCircle
   },
   circleMedium: {
     position: 'absolute',
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     width: 540,
     height: 540,
     borderRadius: 270,
-    backgroundColor: '#57c6e6',
+    backgroundColor: AppColors.lavenderBlue,
   },
   circleSmall: {
     position: 'absolute',
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: 'pink',
+    backgroundColor: AppColors.cherryBlossom,
   },
   circleSmall1: {
     position: 'absolute',
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: 'pink',
+    backgroundColor: AppColors.cherryBlossom,
   },
   circleSmall2: {
     position: 'absolute',
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: 'pink',
+    backgroundColor: AppColors.cherryBlossom,
   },
   circleMini: {
     position: 'absolute',
@@ -90,21 +91,21 @@ const styles = StyleSheet.create({
     width: 240,
     height: 240,
     borderRadius: 120,
-    backgroundColor: 'rgba(248, 248, 248, 0.3)',
+    backgroundColor: AppColors.white_20,
   },
   textContainer: {
     alignItems: 'center',
   },
   footerText: {
     fontSize: 28,
-    color: 'white',
+    color: AppColors.white,
     fontWeight: 'bold',
-    marginBottom:2,
+    marginBottom: 2,
   },
   footerText1: {
-    color: 'white',
+    color: AppColors.white,
     textAlign: 'center',
     fontSize: 16,
-    marginBottom:10,
+    marginBottom: 10,
   },
 });

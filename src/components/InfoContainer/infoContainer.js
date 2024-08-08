@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text, FlatList, Image } from 'react-native';
+import AppColors from '../../utils/appColors';
 
 const InfoContainer = ({ cards = [] }) => {
     return (
         <View style={styles.infoContainer}>
-            <Text style={styles.infoTitle}>معلومات لك</Text>
+            <Text style={styles.infoTitle}>Information for you</Text>
             <FlatList
                 data={cards}
                 keyExtractor={(item, index) => index.toString()}
@@ -30,11 +31,11 @@ const styles = StyleSheet.create({
         fontSize: 26,
         fontWeight: 'bold',
         marginBottom: 10,
-        color: '#8ed5d7',
+        color: AppColors.grey,
     },
     card: {
         backgroundColor: '#fff',
-        padding: 20,
+        padding: 5,
         borderRadius: 10,
         marginRight: 20,
         elevation: 2,
@@ -45,19 +46,20 @@ const styles = StyleSheet.create({
         width: 200,
     },
     cardImage: {
-        width: 150,
-        height: 120,
+        width: 190,
+        height: 150,
         marginBottom: 10,
+        borderRadius: 10,
     },
     cardTitle: {
         fontWeight: 'bold',
-        fontSize: 20,
-        color: 'black',
+        fontSize: 14,
+        color: AppColors.grey,
         marginBottom: 5,
     },
     cardSubtitle: {
-        fontSize: 16,
-        color: 'black',
+        fontSize: 12,
+        color: AppColors.grey,
         textAlign: 'center',
     },
 });

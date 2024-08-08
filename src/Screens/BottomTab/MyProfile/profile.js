@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, ScrollView, Dimensions } from 'react-native';
 import Header from '../../../components/Header/header';
 import Button from '../../../components/Button/button';
 import { useNavigation } from '@react-navigation/native';
+import AppColors from '../../../utils/appColors';
 
 const { width } = Dimensions.get('window');
 
@@ -11,38 +12,37 @@ export default function MyProfileScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Header headerText="ملفي" />
+      <Header headerText="My Profile" />
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>معلومات هامة عن IVF الإجراء</Text>
+        <Text style={styles.title}>Important information about IVF procedure</Text>
         <View style={styles.stepsContainer}>
           <View style={styles.stepRow}>
-            <Step title="تحويل" />
-            <Step title="استرجاع" />
-            <Step title="تنشيط" />
-            <Step title="اختبارات" highlighted />
+            <Step title="Tests" highlighted />
+            <Step title="Energizing" />
+            <Step title="Recovery" />
+            <Step title="Transformation" />
           </View>
           <View style={styles.stepRow}>
-            <Step title="نقل الأجنة" />
-            <Step title="استرجاع البيض" />
-            <Step title="التحفيز الدوائي" />
-            <Step title="اسبوعين انتظر" />
+            <Step title="Wait two weeks" />
+            <Step title="Pharmacological stimulation" />
+            <Step title="Egg retrieval" />
+            <Step title="Embryo transfer" />
           </View>
           <View style={styles.stepRow}>
-            <Step title="كن متحكماً" />
+            <Step title="Be empowered" />
           </View>
         </View>
         <View style={styles.contactContainer}>
-          <Text style={styles.contactTitle}>تتصل</Text>
+          <Text style={styles.contactTitle}>Disclaimer</Text>
           <Text style={styles.contactText}>
-            من أجل متابعة ملف IVF الخاص بك، تحتاج إلى قراءة المعلومات المهمة أو الاطلاع عليها. انقر فوق "أوافق" للمتابعةللمتابعةللمتابعةللمتابعةللمتابعة.
-          </Text>
+            In order to proceed with your IVF file, you need to read or see important information. Click "I agree" to continue.          </Text>
         </View>
       </View>
       <Button
-        title="أنا موافق"
+        title="I Agree"
         backgroundColor="#8ed5d7"
         textColor="white"
-        onPress={() => navigation.navigate('Profile1')} // Navigate to Profile screen
+        onPress={() => navigation.navigate('Profile1')}
       />
     </ScrollView>
   );
@@ -57,7 +57,7 @@ const Step = ({ title, highlighted }) => (
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#fff',
+    backgroundColor: AppColors.white,
     paddingTop: 20,
     alignItems: 'center',
   },
@@ -67,9 +67,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight:'bold',
-    color: '#8ed5d7',
+    fontWeight: 'bold',
+    color: AppColors.grey,
     marginVertical: 25,
+    textAlign: 'center'
   },
   stepsContainer: {
     width: width * 0.9,
@@ -78,19 +79,19 @@ const styles = StyleSheet.create({
   stepRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingBottom:50,
+    paddingBottom: 50,
   },
   step: {
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#e6f2f2',
+    backgroundColor: AppColors.black_25,
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 5,
   },
   highlightedStep: {
-    backgroundColor: '#d1e7dd',
+    backgroundColor: AppColors.downy,
   },
   stepText: {
     textAlign: 'center',
@@ -106,20 +107,21 @@ const styles = StyleSheet.create({
     width: width * 0.9,
     padding: 20,
     height: 150,
-    backgroundColor: 'rgba(233, 245, 245, 0.3)', 
+    backgroundColor: 'rgba(233, 245, 245, 0.3)',
     borderColor: '#8ed5d7',
     borderRadius: 10,
     borderWidth: 1,
     marginBottom: 20,
   },
-  
+
   contactTitle: {
     fontSize: 24,
-    color: '#00adf5',
+    fontWeight: '700',
+    color: AppColors.lavenderBlue,
     marginBottom: 10,
   },
   contactText: {
-    fontSize: 20,
-    color: '#00adf5',
+    fontSize: 16,
+    color: AppColors.grey,
   },
 });

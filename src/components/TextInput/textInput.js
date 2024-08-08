@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   input: {
-    backgroundColor: 'white',
+    backgroundColor: '#ffffff',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 30,
   },
 });

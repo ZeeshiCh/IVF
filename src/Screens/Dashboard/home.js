@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, StatusBar, TouchableOpacity, ScrollView, Switch } from 'react-native';
+import { StyleSheet, View, Text, FlatList, StatusBar, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import AppColors from '../../utils/appColors';
 import InfoContainer from '../../components/InfoContainer/infoContainer';
-import Image1 from '../../assets/images/1.png';
-import Image2 from '../../assets/images/2.png';
-import Image3 from '../../assets/images/3.png';
-import Image4 from '../../assets/images/4.png';
+import Slider from '@react-native-community/slider';
+
+// Import the emotion images
+import HappyIcon from '../../assets/images/homeemoji/emoji1.png';
+import CalmIcon from '../../assets/images/homeemoji/emoji2.png';
+import NeutralIcon from '../../assets/images/homeemoji/emoji3.png';
+import SadIcon from '../../assets/images/homeemoji/emoji4.png';
+import AngryIcon from '../../assets/images/homeemoji/emoji5.png';
+import Image1 from '../../assets/images/home8.png';
+import Image2 from '../../assets/images/home9.png';
+import Image3 from '../../assets/images/home10.png';
+import Image4 from '../../assets/images/home8.png';
+import Image5 from '../../assets/images/home5.png';
+import Image6 from '../../assets/images/home6.png';
+import Image7 from '../../assets/images/home7.png';
+import { useNavigation } from '@react-navigation/native';
 
 const cards = [
-    { title: 'علاج الصداع والأرق', subtitle: 'وصف المنتج بشكل مختصر وصف المنتج', image: Image1 },
-    { title: 'قرآءوا عاحصلما جلاء', subtitle: 'وصف المنتج بشكل مختصر وصف المنتج', image: Image2 },
-    { title: 'علاج الصداع والأرق', subtitle: 'وصف المنتج بشكل مختصر وصف المنتج', image: Image3 },
-    { title: 'علاج الصداع والأرق', subtitle: 'وصف المنتج بشكل مختصر وصف المنتج', image: Image4 },
+    { title: 'They read “Adsala Jalaa”.', subtitle: 'Rasṭḥam lākṣb, Jatnamla Saw, Jatnamla Saw', image: Image1 },
+    { title: 'They read “Adsala Jalaa”.', subtitle: 'Rasṭḥam lākṣb, Jatnamla Saw, Jatnamla Saw', image: Image2 },
+    { title: 'They read “Adsala Jalaa”.', subtitle: 'Rasṭḥam lākṣb, Jatnamla Saw, Jatnamla Saw', image: Image3 },
+    { title: 'They read “Adsala Jalaa”.', subtitle: 'Rasṭḥam lākṣb, Jatnamla Saw, Jatnamla Saw', image: Image4 },
 ];
 
 const generateWeekDates = (startDate) => {
@@ -30,32 +43,35 @@ const formatDate = (date) => {
     return { day, weekday };
 };
 
+const EMOTIONS = [
+  { label: 'Happy', color: 'green', image: HappyIcon },
+  { label: 'Calm', color: 'blue', image: CalmIcon },
+  { label: 'Neutral', color: 'yellow', image: NeutralIcon },
+  { label: 'Sad', color: 'orange', image: SadIcon },
+  { label: 'Angry', color: 'red', image: AngryIcon },
+];
+
 export default function HomeScreen() {
+    const navigation = useNavigation();
     const today = new Date();
     const weekDates = generateWeekDates(today);
 
     const [selectedDate, setSelectedDate] = useState(today.toDateString());
-    const [isToggled, setIsToggled] = useState(false);
+    const [selectedEmotion, setSelectedEmotion] = useState(2);
 
     const handleDatePress = (date) => {
         setSelectedDate(date.toDateString());
     };
 
-    const handleToggle = (value) => {
-        setIsToggled(value);
+    const handleSliderChange = (value) => {
+        setSelectedEmotion(value);
     };
 
     const tasks = [
-        { time: '6:00 PM', title: 'خُذ وصفة طبية', subtitle: 'Paracetamol, 10 mg' },
-        { title: 'أعراضك اليومية', subtitle: 'سعيد، اكتشاف أحمر، etc' },
-        { time: '7:00 PM', title: 'اختبار معمل', subtitle: 'النص أو الملاحظة تذكر المريض' },
+        { time: '6:00 PM', title: 'Take a prescription', subtitle: 'Paracetamol, 10 mg', image: Image5 },
+        { title: 'Your daily symptoms', subtitle: 'happy red spotting, etc', image: Image6 },
+        { time: '7:00 PM', title: 'Laboratory test', subtitle: 'Text or note reminds the patient', image: Image7 },
     ];
-
-    const chatData = {
-        username: 'فاطمة',
-        time: '10 ساعات',
-        message: 'انه يهذي ناوعلا نص نصفي فقط للسياق نص نصفي فقط للسياق نص نصفي فقط للسياق نص نصفي فقط للسياق نص نصفي فقط للسياق نص نصفي فقط للسياق هذا نص نصفي',
-    };
 
     return (
         <ScrollView style={styles.container}>
@@ -64,43 +80,43 @@ export default function HomeScreen() {
                 <View style={styles.profileIcon}>
                     <Ionicons name="person-circle" size={42} color="white" />
                 </View>
-                <Text style={styles.headerText}>صفحة المنزل</Text>
-                <View style={styles.menuIcon}>
+                <Text style={styles.headerText}>Home page</Text>
+                <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.navigate('Settings')}>
                     <Ionicons name="menu" size={32} color="white" />
-                </View>
+                </TouchableOpacity>
             </View>
 
             <View style={styles.welcomeContainer}>
-                <Text style={styles.welcomeText}>مرحباً بك على متن المستخدم</Text>
+                <Text style={styles.welcomeText}>Welcome aboard user</Text>
             </View>
 
             <View style={styles.contentContainer}>
                 <View style={styles.stageContainer}>
-                    <Text style={styles.stageTitle}>المرحلة الخاصة بك</Text>
+                    <Text style={styles.stageTitle}>Your Profile</Text>
                     <View style={styles.stageSteps}>
                         <View style={styles.step}>
-                            <Ionicons name="color-palette" size={30} color="#ccc" />
-                            <Text style={styles.stepText}>دورة الحمل</Text>
+                            <Image source={require('../../assets/images/home1.png')} style={styles.image} />
+                            <Text style={styles.stepTextActive}>Basic</Text>
                         </View>
-                        <View style={styles.step}>
-                            <Ionicons name="flask" size={30} color="#ccc" />
-                            <Text style={styles.stepText}>تاريخ</Text>
+                        <View style={styles.step1}>
+                            <Image source={require('../../assets/images/home2.png')} style={styles.image} />
+                            <Text style={styles.stepText}>Basic</Text>
                         </View>
-                        <View style={styles.step}>
-                            <Ionicons name="clipboard" size={30} color="#ccc" />
-                            <Text style={styles.stepText}>تشخيص</Text>
+                        <View style={styles.step1}>
+                            <Image source={require('../../assets/images/home3.png')} style={styles.image} />
+                            <Text style={styles.stepText}>Basic</Text>
                         </View>
-                        <View style={styles.step}>
-                            <Ionicons name="medkit" size={30} color="#45b7c4" />
-                            <Text style={styles.stepTextActive}>أساسي</Text>
+                        <View style={styles.step1}>
+                            <Image source={require('../../assets/images/home4.png')} style={styles.image} />
+                            <Text style={styles.stepText}>Basic</Text>
                         </View>
                     </View>
                 </View>
 
                 <View style={styles.calendarContainer}>
                     <View style={styles.calendarHeader}>
+                        <Ionicons name="calendar" size={20} color={AppColors.lavenderBlue} />
                         <Text style={styles.calendarTitle}>July 2024</Text>
-                        <Ionicons name="calendar" size={20} color="#8ed5d7" />
                     </View>
                     <FlatList
                         data={weekDates}
@@ -129,6 +145,7 @@ export default function HomeScreen() {
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item, index }) => (
                             <View style={[styles.task, index === tasks.length - 1 && styles.lastTask]}>
+                                                                <Image source={item.image} style={styles.taskImage} />
                                 <View style={styles.taskTextContainer}>
                                     <Text style={styles.taskTime}>{item.time}</Text>
                                     <Text style={styles.taskTitle}>{item.title}</Text>
@@ -146,25 +163,32 @@ export default function HomeScreen() {
 
                 <View style={styles.chatContainer}>
                     <View style={styles.chatHeader}>
-                        <Switch
-                            value={isToggled}
-                            onValueChange={handleToggle}
-                            thumbColor={isToggled ? "#4ab0a3" : "#f4f3f4"}
-                            trackColor={{ false: "#ccc", true: "#4ab0a3" }}
-                            style={styles.switch}
-                        />
-                        <Text style={styles.chatTitle}>أحدث محادثة</Text>
+                        <Text style={styles.chatTitle}>How do you feel today? Write Something</Text>
                     </View>
-                    <View style={styles.chatMessageContainer}>
-                        <View style={styles.chatUserInfo}>
-                            <View style={{ marginRight: 10 }}>
-                                <Text style={styles.chatUsername}>{chatData.username}</Text>
-                                <Text style={styles.chatTime}>{chatData.time}</Text>
+                </View>
+
+                <View style={styles.emotionContainer}>
+                    <View style={styles.emotionIconsContainer}>
+                        {EMOTIONS.map((emotion, index) => (
+                            <View key={index} style={styles.emotionIconWrapper}>
+                                <Image source={emotion.image} style={styles.emotionIcon} />
+                                <Text style={styles.emotionLabel}>{emotion.label}</Text>
                             </View>
-                            <Ionicons name="person-circle" size={40} color="#8ed5d7" />
-                        </View>
-                        <Text style={styles.messageTitle}>أحدث محادثة</Text>
-                        <Text style={styles.chatMessage}>{chatData.message}</Text>
+                        ))}
+                    </View>
+                    <Slider
+                        style={styles.slider}
+                        minimumValue={0}
+                        maximumValue={4}
+                        step={1}
+                        value={selectedEmotion}
+                        onValueChange={handleSliderChange}
+                        minimumTrackTintColor={EMOTIONS[selectedEmotion].color}
+                        thumbTintColor={EMOTIONS[selectedEmotion].color}
+                    />
+                    <View style={styles.emotionDescription}>
+                        <Text style={styles.emotionText}>{EMOTIONS[selectedEmotion].label}</Text>
+                        <Text style={styles.desc}>Qaisl Tafa Fassan v Create a text. Create a text. Create a text. Create a text. Create a text This is the storyQaisl Tafa Fassan v Create a text. Create a text. Create a text. Create a text. Create a text This is the story</Text>
                     </View>
                 </View>
             </View>
@@ -175,18 +199,18 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: AppColors.white,
+        paddingTop:20,
     },
     header: {
-        backgroundColor: '#8ed5d7',
+        backgroundColor: AppColors.downy,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: 10,
-        paddingTop: 10 + (StatusBar.currentHeight || 0),
     },
     headerText: {
-        color: 'white',
+        color: AppColors.white,
         fontSize: 20,
         fontWeight: 'bold',
     },
@@ -197,32 +221,39 @@ const styles = StyleSheet.create({
         padding: 5,
     },
     welcomeContainer: {
-        backgroundColor: '#8ed5d7',
-        padding: 25,
+        backgroundColor: AppColors.downy,
+        padding: 20,
         alignItems: 'center',
         borderBottomRightRadius: 30,
         borderBottomLeftRadius: 30,
     },
     welcomeText: {
-        color: 'white',
+        color: AppColors.white,
         fontSize: 26,
+        fontWeight: 'bold'
     },
     contentContainer: {
         paddingHorizontal: 20,
-        paddingVertical: 10,
     },
     stageContainer: {
-        backgroundColor: '#fff',
+        backgroundColor: AppColors.white,
         padding: 10,
         borderRadius: 10,
         marginVertical: 10,
         elevation: 0,
     },
+    image: {
+        marginTop:10,
+        width: 40,
+        height: 40,
+        resizeMode: 'contain',
+    },
     stageTitle: {
-        fontSize: 18,
+        fontSize: 20,
+        color: AppColors.lavenderBlue,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginVertical: 10,
+        marginVertical: 20,
     },
     stageSteps: {
         flexDirection: 'row',
@@ -230,15 +261,31 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     step: {
+        backgroundColor: AppColors.downyCircle,
+        height:70,
+        width:70,
+        borderRadius:35,
         alignItems: 'center',
     },
+    step1: {
+        backgroundColor: AppColors.white,
+        height: 70,
+        width: 70,
+        borderRadius: 35,
+        alignItems: 'center',
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 4 },  
+        shadowOpacity: 0.5,  
+        shadowRadius: 6,       
+        elevation: 5,         
+    },
     stepText: {
-        color: '#ccc',
-        marginTop: 5,
+        color: AppColors.grey,
+        marginTop: 25,
     },
     stepTextActive: {
-        color: '#45b7c4',
-        marginTop: 5,
+        color: AppColors.downy,
+        marginTop: 25,
     },
     calendarContainer: {
         backgroundColor: '#fff',
@@ -250,14 +297,14 @@ const styles = StyleSheet.create({
     calendarHeader: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
         marginBottom: 10,
     },
     calendarTitle: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#8ed5d7',
-        marginRight: 5,
+        color: AppColors.lavenderBlue,
+        marginLeft: 5,
     },
     day: {
         alignItems: 'center',
@@ -266,22 +313,22 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         borderWidth: 1.5,
         borderColor: '#8ed5d7',
-        backgroundColor: '#fff',
+        backgroundColor: AppColors.white,
     },
     selectedDay: {
-        backgroundColor: '#8ed5d7',
-        borderColor: '#8ed5d7',
+        backgroundColor: AppColors.downy,
+        borderColor: AppColors.downy,
     },
     selectedDayText: {
         color: '#fff',
     },
     dayText: {
-        color: '#333',
+        color: AppColors.grey,
         fontSize: 18,
         fontWeight: 'bold'
     },
     tasksContainer: {
-        backgroundColor: '#fff',
+        backgroundColor: AppColors.white,
         padding: 10,
         borderRadius: 10,
         marginVertical: 10,
@@ -293,51 +340,52 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         justifyContent: 'space-between',
         borderBottomWidth: 2,
-        borderBottomColor: '#8ed5d7',
+        borderBottomColor: AppColors.downy,
         paddingBottom: 10,
     },
     lastTask: {
         borderBottomWidth: 0,
+    },
+    taskImage: {
+        width: 40,
+        height: 40,
+        marginRight:15,
     },
     taskIcon: {
         marginLeft: 10,
     },
     taskTextContainer: {
         flex: 1,
-        alignItems: 'flex-end',
+        alignItems: 'flex-start',
     },
     taskTitle: {
         fontWeight: 'bold',
-        color: '#8ed5d7',
-        fontSize: 22,
+        color: AppColors.grey,
+        fontSize: 18,
     },
     taskSubtitle: {
-        color: '#8ed5d7',
-        fontSize: 16,
+        color: AppColors.lightGrey,
+        fontSize: 14,
     },
     taskTime: {
-        color: '#8ed5d7',
+        color: AppColors.grey,
+        fontWeight:'500',
         marginBottom: 5,
     },
     chatContainer: {
-        backgroundColor: '#e6fcfc',
-        padding: 20,
+        backgroundColor: AppColors.white,
         borderRadius: 10,
         marginVertical: 10,
     },
     chatHeader: {
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'left',
         justifyContent: 'space-between',
-        marginBottom: 15,
-    },
-    switch: {
-        marginRight: 10,
     },
     chatTitle: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#8ed5d7',
+        color: AppColors.grey,
     },
     chatMessageContainer: {
         backgroundColor: '#fff',
@@ -346,11 +394,11 @@ const styles = StyleSheet.create({
         borderColor: '#8ed5d7',
         borderWidth: 2,
         flexDirection: 'column',
-        alignItems: 'flex-end',
+        alignItems: 'flex-start',
     },
     chatUserInfo: {
         flexDirection: 'row',
-        alignItems: 'flex-end',
+        alignItems: 'flex-start',
     },
     chatUsername: {
         fontWeight: 'bold',
@@ -362,16 +410,56 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#999',
     },
-    messageTitle:{
-        marginTop:10,
+    messageTitle: {
+        marginTop: 10,
         fontSize: 20,
         fontWeight: 'bold',
-        color: 'black',
+        color: AppColors.grey,
     },
     chatMessage: {
         fontSize: 16,
-        color: '#333',
+        color: AppColors.grey,
         lineHeight: 24,
         flex: 1,
+    },
+    emotionContainer: {
+        borderWidth: 1,
+        borderColor: AppColors.downy,
+        borderRadius: 10,
+        padding: 15,
+        marginTop: 20,
+        marginBottom:20,
+    },
+    emotionIconsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    emotionIconWrapper: {
+        alignItems: 'center',
+    },
+    emotionIcon: {
+        width: 40,
+        height: 40,
+    },
+    emotionLabel: {
+        marginTop: 5,
+        fontSize: 14,
+        color: AppColors.grey,
+    },
+    slider: {
+        marginVertical: 20,
+    },
+    emotionDescription: {
+        alignItems: 'left',
+    },
+    emotionText: {
+        fontSize: 18,
+        color: AppColors.downy,
+        fontWeight: 'bold',
+    },
+    desc:{
+        fontSize: 14,
+        color: AppColors.lightGrey,
+        fontWeight: 'bold',
     },
 });

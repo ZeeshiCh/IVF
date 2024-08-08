@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Image } from 'react-native';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/Button/button';
+import AppColors from '../../utils/appColors';
 
-const info1 = () => {
+const Info1 = () => {
     const navigation = useNavigation();
 
     const handlePress = () => {
@@ -12,42 +13,76 @@ const info1 = () => {
 
     return (
         <View style={styles.container}>
+            <View style={styles.imageContainer}>
+                <Image
+                    source={require('../../assets/images/info1bg.png')}
+                    style={styles.image}
+                />
+                <Image
+                    source={require('../../assets/images/info1.png')}
+                    style={styles.overlayImage}
+                />
+            </View>
+
             <View style={styles.textContainer}>
-                <Text style={styles.footerText}>التطبيقالتطبيقالتطبيقالتطبيقا عيادة</Text>
-                <Text style={styles.footerText1}>التطبيقالتطبيقالتطبيق عيادةعيادة</Text>
+                <Text style={styles.footerText}>You just need to answer a few short questions</Text>
+                <Text style={styles.footerText1}>This is Demi's question and its summary. This is Demi's question and its summary</Text>
             </View>
             <Button
-                title="التطبيق"
-                backgroundColor="#8ed5d7"
+                title="I am ready!"
+                backgroundColor={AppColors.downy}
                 textColor="white"
                 onPress={handlePress}
             />
         </View>
-    )
-}
+    );
+};
 
-export default info1
+export default Info1;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: AppColors.white,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingHorizontal: 20,
+    },
+    imageContainer: {
+        width: 200,
+        height: 200,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 100,
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+    },
+    overlayImage: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+        top: 0,
     },
     textContainer: {
         alignItems: 'center',
+        width: '100%',
+        paddingHorizontal: 30,
     },
     footerText: {
         fontSize: 28,
-        color: 'black',
+        color: AppColors.grey,
         fontWeight: 'bold',
-        marginBottom: 2,
-    },
-    footerText1: {
-        color: 'black',
         textAlign: 'center',
-        fontSize: 16,
         marginBottom: 10,
     },
-})
+    footerText1: {
+        color: AppColors.grey,
+        textAlign: 'center',
+        fontSize: 16,
+        marginBottom: 50,
+    },
+});

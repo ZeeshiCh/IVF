@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import Button from '../../components/Button/button'; 
+import Button from '../../components/Button/button';
 import { useNavigation } from '@react-navigation/native';
+import AppColors from '../../utils/appColors';
 
 export default function Info2() {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-    const handlePress = () => {
-        navigation.navigate('Info3');
-    };
+  const handlePress = () => {
+    navigation.navigate('Info3');
+  };
   const [selectedOption, setSelectedOption] = useState(null);
 
   const options = [
-    'خيار للاختيار',
-    'خيار للاختيار',
-    'خيار للاختيار',
-    'خيار للاختيار',
-    'خيار للاختيار',
-    'خيار للاختيار',
+    'Option to choose',
+    'Option to choose',
+    'Option to choose',
+    'Option to choose',
+    'Option to choose',
+    'Option to choose',
   ];
 
   return (
@@ -27,9 +28,9 @@ export default function Info2() {
 
       <View style={styles.contentContainer}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <Text style={styles.questionTitle}>هذا سؤال ديمي</Text>
-          <Text style={styles.questionSubtitle}>هذا سؤال ديمي ومختصره هذا سؤال ديمي ومختصره</Text>
-          
+          <Text style={styles.questionTitle}>This is Demi's question</Text>
+          <Text style={styles.questionSubtitle}>Lorem ipsum dolor sit amet, consectetur </Text>
+
           <View style={styles.optionsContainer}>
             {options.map((option, index) => (
               <TouchableOpacity
@@ -51,11 +52,10 @@ export default function Info2() {
       </View>
 
       <Button
-        title="التالي"
-        backgroundColor="#8ed5d7"
+        title="NEXT"
+        backgroundColor={AppColors.downy}
         textColor="white"
-        onPress={handlePress} 
-        style={styles.nextButton}
+        onPress={handlePress}
       />
     </View>
   );
@@ -64,7 +64,7 @@ export default function Info2() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: AppColors.white,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     width: 500,
     height: 500,
     borderRadius: 250,
-    backgroundColor: '#8ed5d7',
+    backgroundColor: AppColors.downy,
   },
   circleMedium: {
     position: 'absolute',
@@ -96,16 +96,17 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 100,
-    backgroundColor: '#57c6e6',
+    backgroundColor: AppColors.lavenderBlue,
   },
   questionTitle: {
     fontSize: 24,
+    color: AppColors.grey,
     fontWeight: 'bold',
     marginVertical: 10,
   },
   questionSubtitle: {
     fontSize: 16,
-    color: '#888',
+    color: AppColors.grey,
     marginVertical: 10,
     textAlign: 'center',
   },
@@ -116,26 +117,22 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   optionButton: {
-    backgroundColor: '#fff',
-    borderColor: '#ccc',
-    borderWidth: 1,
+    backgroundColor: AppColors.white,
+    borderColor: AppColors.grey,
+    borderWidth: 0.5,
     borderRadius: 25,
     paddingVertical: 5,
-    paddingHorizontal: 40,
+    paddingHorizontal: 30,
     margin: 5,
   },
   selectedOption: {
-    backgroundColor: '#8ed5d7',
+    backgroundColor: AppColors.downy,
   },
   optionText: {
     fontSize: 16,
-    color: '#333',
+    color: AppColors.grey,
   },
   selectedOptionText: {
-    color: '#fff',
-  },
-  nextButton: {
-    width: '90%',
-    marginBottom: 20,
+    color: AppColors.white,
   },
 });

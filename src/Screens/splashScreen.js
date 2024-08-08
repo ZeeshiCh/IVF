@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AppColors from '../utils/appColors';
 
 export default function SplashScreen() {
   const navigation = useNavigation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('OnBoarding1');
-    }, 3000); 
+      navigation.navigate('LanguageSelectionScreen');
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [navigation]);
@@ -22,7 +23,7 @@ export default function SplashScreen() {
       <View style={styles.circleContainer}>
         <Text style={styles.logoText}>LOGO</Text>
       </View>
-      <Text style={styles.footerText}>التطبيق عيادة IVF</Text>
+      <Text style={styles.footerText}>IVF clinic app</Text>
     </View>
   );
 }
@@ -30,7 +31,7 @@ export default function SplashScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#8ed5d7',
+    backgroundColor: AppColors.downy,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     width: 500,
     height: 500,
     borderRadius: 250,
-    backgroundColor: '#45b7c4',
+    backgroundColor: AppColors.downyCircle,
   },
   circleMedium: {
     position: 'absolute',
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     width: 340,
     height: 340,
     borderRadius: 170,
-    backgroundColor: '#57c6e6',
+    backgroundColor: AppColors.lavenderBlue,
   },
   circleSmall: {
     position: 'absolute',
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: 'pink',
+    backgroundColor: AppColors.cherryBlossom,
   },
   circleMini: {
     position: 'absolute',
@@ -68,26 +69,27 @@ const styles = StyleSheet.create({
     width: 160,
     height: 160,
     borderRadius: 80,
-    backgroundColor: 'rgba(248, 248, 248, 0.5)',
+    backgroundColor: AppColors.white_30,
   },
   circleContainer: {
     width: 500,
     height: 500,
     borderRadius: 250,
-    backgroundColor: 'white',
+    backgroundColor: AppColors.white,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
   },
   logoText: {
     fontSize: 36,
-    color: 'pink',
+    fontWeight: 'bold',
+    color: AppColors.downy,
   },
   footerText: {
     position: 'absolute',
     bottom: 100,
     fontSize: 22,
-    color: 'white',
+    color: AppColors.white,
     fontWeight: 'bold',
   },
 });

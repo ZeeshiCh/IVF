@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { StatusBar } from 'expo-status-bar';
-import { useNavigation } from '@react-navigation/native'; 
+import { useNavigation } from '@react-navigation/native';
 import CustomTextInput from '../../components/TextInput/textInput';
+import Button from '../../components/Button/button';
+import AppColors from '../../utils/appColors';
 
 export default function Onboarding2() {
   const [username, setUsername] = useState('');
@@ -11,20 +13,15 @@ export default function Onboarding2() {
   const [birthYear, setBirthYear] = useState('');
   const [birthMonth, setBirthMonth] = useState('');
 
-  const navigation = useNavigation(); 
-
-  const handlePress = () => {
-    navigation.navigate('OnBoarding3');
-  };
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>دعونا نجعلك تقوم بالتسجيل</Text>
-        <Text style={styles.subtitle}>Lorem ipsum dolor sit amet, consectetur</Text>
+        <Text style={styles.title}>Let us get you signed up</Text>
       </View>
       <CustomTextInput
-        placeholder="اسم المستخدم"
+        placeholder="Username"
         value={username}
         onChangeText={setUsername}
       />
@@ -40,20 +37,23 @@ export default function Onboarding2() {
           style={styles.picker}
           onValueChange={(itemValue) => setBirthYear(itemValue)}
         >
-          <Picker.Item label="سنة الميلاد" value="" />
+          <Picker.Item label="Year of Birth" value="" />
         </Picker>
         <Picker
           selectedValue={birthMonth}
           style={styles.picker}
           onValueChange={(itemValue) => setBirthMonth(itemValue)}
         >
-          <Picker.Item label="شهر الميلاد" value="" />
+          <Picker.Item label="Birth Month" value="" />
         </Picker>
       </View>
-      <TouchableOpacity onPress={handlePress}>
-        <Text style={styles.buttonText}>التالي</Text>
-      </TouchableOpacity>
-      <Text style={styles.footerText}>هل لديك حساب؟ تسجيل الدخول</Text>
+      <Button
+        title="NEXT"
+        backgroundColor={AppColors.lavenderBlue}
+        textColor="white"
+        onPress={() => navigation.navigate('OnBoarding3')}
+      />
+      {/* <Text style={styles.footerText}>هل لديك حساب؟ تسجيل الدخول</Text> */}
       <StatusBar style="auto" />
     </View>
   );
@@ -62,27 +62,21 @@ export default function Onboarding2() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#54b0b3',
+    backgroundColor: AppColors.bgcolor,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
   textContainer: {
     width: '100%',
-    alignItems: 'flex-end',
     marginBottom: 40,
   },
   title: {
-    fontSize: 32,
-    color: 'white',
+    fontSize: 28,
+    color: AppColors.downy,
     marginBottom: 5,
-    textAlign: 'right',
+    textAlign: 'center',
     fontWeight: 'bold',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: 'white',
-    textAlign: 'right',
   },
   pickerContainer: {
     flexDirection: 'row',
@@ -93,26 +87,12 @@ const styles = StyleSheet.create({
   picker: {
     flex: 1,
     height: 50,
-    backgroundColor: 'white',
-    borderRadius: 5,
+    backgroundColor: AppColors.white,
+    borderRadius: 50,
     marginHorizontal: 5,
   },
-  button: {
-    width: '100%',
-    backgroundColor: 'white',
-    padding: 15,
-    borderRadius: 5,
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  buttonText: {
-    fontSize: 24,
-    color: '#ffffff',
-    paddingVertical: 20,
-    fontWeight: 'bold',
-  },
   footerText: {
-    color: 'black',
+    color: AppColors.black,
     textAlign: 'center',
     fontSize: 16,
   },
