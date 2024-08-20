@@ -81,7 +81,7 @@ export default function HomeScreen() {
                     <Ionicons name="person-circle" size={42} color="white" />
                 </View>
                 <Text style={styles.headerText}>Home page</Text>
-                <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.navigate('Settings')}>
+                <TouchableOpacity style={styles.menuIcon} onPress={() => navigation.openDrawer()}>
                     <Ionicons name="menu" size={32} color="white" />
                 </TouchableOpacity>
             </View>
