@@ -108,7 +108,7 @@ export default function AppNavigator() {
       <Stack.Screen name="Info3" component={Info3} />
       <Stack.Screen name="Info4" component={Info4} />
       <Stack.Screen name="Info5" component={Info5} />
-      <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
+      {/* <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} /> */}
       <Stack.Screen name="Profile1" component={Profile1} />
       <Stack.Screen name="Profile2Screen" component={Profile2Screen} />
       <Stack.Screen name="Pharmaceutical" component={Pharmaceutical} />
